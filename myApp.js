@@ -1,15 +1,14 @@
 var mongoose = require("mongoose");
+// import { mongoose } from "mongoose";
 require("dotenv").config();
 
-try {
-  mongoose.connect(
-    process.env.MONGO_URI,
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    () => console.log("connected to the database")
-  );
-} catch (e) {
-  console.log("This is the error message", e);
-}
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to the database all are happy now"))
+  .catch((e) => console.log("This is the error by connecting to the database"));
 
 let Person;
 

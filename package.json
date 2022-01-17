@@ -23,5 +23,8 @@
     "mongoose",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97"
+  }
 }
