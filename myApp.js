@@ -38,7 +38,7 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  let person_created = Person.create(arrayOfPeople);
+  let person_created = new Person.create(arrayOfPeople);
   person_created
     .save()
     .then((data) => {
