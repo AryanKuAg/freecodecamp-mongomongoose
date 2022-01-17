@@ -11,6 +11,13 @@ mongoose
   .catch((e) => console.log("This is the error by connecting to the database"));
 
 let Person;
+const personSchema = mongoose.Schema({
+  name: { type: String, required: true },
+  age: { type: Number },
+  favoriteFoods: { type: [String] },
+});
+
+Person = new mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
