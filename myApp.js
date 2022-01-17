@@ -17,10 +17,24 @@ const personSchema = mongoose.Schema({
   favoriteFoods: { type: [String] },
 });
 
-Person = new mongoose.model("Person", personSchema);
+Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const person = new Person({
+    name: "Aryan",
+    age: 18,
+    favoriteFoods: ["Dhosa", "Maggi", "Pizza", "cold drink"],
+  });
+  person
+    .save()
+    .then((data) => {
+      console.log("Person name is saved now");
+      done(null, data);
+    })
+    .catch((e) => {
+      console.log("This is the error while saving person document");
+      done(e);
+    });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
