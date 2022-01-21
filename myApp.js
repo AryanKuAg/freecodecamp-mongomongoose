@@ -70,11 +70,7 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-  PersonModel.update(
-    { _id: personId },
-    { $push: { friends: foodToAdd } },
-    done
-  );
+  Person.update({ _id: personId }, { $push: { friends: foodToAdd } }, done);
 };
 
 const findAndUpdate = (personName, done) => {
