@@ -68,13 +68,14 @@ const findPersonById = (personId, done) => {
   });
 };
 
-const findEditThenSave = (personId, done) => {
+const findEditThenSave = async (personId, done) => {
   const foodToAdd = "hamburger";
-  const filter = { _id: persondId };
+  const filter = { _id: personId };
   const update = { $push: { favoriteFoods: foodToAdd } };
 
   // `doc` is the document _before_ `update` was applied
-  Character.findOneAndUpdate(filter, update);
+  data = await Person.findOneAndUpdate(filter, update);
+  done(null, data);
 };
 
 const findAndUpdate = (personName, done) => {
