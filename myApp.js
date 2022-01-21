@@ -70,12 +70,17 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = async (personId, done) => {
   const foodToAdd = "hamburger";
-  const filter = { _id: personId };
-  const update = { $push: { favoriteFoods: foodToAdd } };
-
-  // `doc` is the document _before_ `update` was applied
-  data = await Person.findOneAndUpdate(filter, update);
-  done(null, data);
+  let personData = await Person.findById(personId);
+  personData.favoriteFoods.push(foodToAdd);
+  Person.findOne({ Id: personId })
+    .update(personData, function (err, data) {
+      if (err) {
+        done(err);
+      } else {
+        done(null, data);
+      }
+    })
+    .exec();
 };
 
 const findAndUpdate = (personName, done) => {
