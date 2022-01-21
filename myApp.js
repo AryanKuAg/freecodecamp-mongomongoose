@@ -70,7 +70,11 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-  Person.update({ _id: personId }, { $push: { friends: foodToAdd } }, done);
+  const filter = { _id: persondId };
+  const update = { $push: { favoriteFoods: foodToAdd } };
+
+  // `doc` is the document _before_ `update` was applied
+  Character.findOneAndUpdate(filter, update);
 };
 
 const findAndUpdate = (personName, done) => {
