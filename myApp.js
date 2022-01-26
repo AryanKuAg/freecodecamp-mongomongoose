@@ -74,6 +74,8 @@ const findEditThenSave = async (personId, done) => {
   console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
   console.log(personData);
   personData.favoriteFoods.push(foodToAdd);
+  console.log(personData);
+
   Person.findOne({ Id: personId })
     .update(personData, function (err, data) {
       if (err) {
