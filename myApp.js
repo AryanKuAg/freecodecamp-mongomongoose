@@ -137,8 +137,17 @@ const removeById = (personId, done) => {
 
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
+  Person.remove({ name: nameToRemove }, function (errr, data) {
+    if (errr) {
+      console.log("eror");
+      done(errr);
+    } else {
+      console.log("good darling");
+      done(null, data);
+    }
+  });
 
-  done(null /*, data*/);
+  // done(null /*, data*/);
 };
 
 const queryChain = (done) => {
