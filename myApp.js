@@ -71,6 +71,8 @@ const findPersonById = (personId, done) => {
 const findEditThenSave = async (personId, done) => {
   const foodToAdd = "hamburger";
   let personData = await Person.findById(personId).exec();
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+  console.log(personData);
   personData.favoriteFoods.push(foodToAdd);
   Person.findOne({ Id: personId })
     .update(personData, function (err, data) {
