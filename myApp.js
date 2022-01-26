@@ -108,8 +108,12 @@ const findAndUpdate = async (personName, done) => {
 
   // try {
   Person.findOneAndUpdate(query, update, option, function (e, data) {
-    if (e) return console.log("Error brother error");
-    console.log("Great work bro");
+    if (e) {
+      return console.log("Error brother error");
+    } else {
+      console.log("Great work bro");
+      done(null, data);
+    }
   });
   //   done(null /*, data*/);
   //   console.log("wah ji wah");
