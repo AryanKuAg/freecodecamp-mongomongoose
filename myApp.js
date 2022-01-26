@@ -123,7 +123,16 @@ const findAndUpdate = async (personName, done) => {
 };
 
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findByIdAndRemove(personId, function (err, data) {
+    if (err) {
+      console.log("error brother error");
+      done(err);
+    } else {
+      console.log("good bro good");
+      done(null, data);
+    }
+  });
+  // done(null /*, data*/);
 };
 
 const removeManyPeople = (done) => {
