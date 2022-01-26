@@ -74,17 +74,18 @@ const findEditThenSave = async (personId, done) => {
   personData.favoriteFoods.push(foodToAdd);
   // console.log(personData);
   // all good above but down has some issue.
-  Person.findOne({ Id: personId })
-    .update(personData, function (err, data) {
-      if (err) {
-        done(err);
-        console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror");
-      } else {
-        done(null, data);
-        console.log("successsuccesssuccesssuccesssuccesssuccess");
-      }
-    })
-    .exec();
+  await personData.save();
+  // Person.findOne({ Id: personId })
+  //   .update(personData, function (err, data) {
+  //     if (err) {
+  //       done(err);
+  //       console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror");
+  //     } else {
+  //       done(null, data);
+  //       console.log("successsuccesssuccesssuccesssuccesssuccess");
+  //     }
+  //   })
+  //   .exec();
 };
 
 const findAndUpdate = (personName, done) => {
