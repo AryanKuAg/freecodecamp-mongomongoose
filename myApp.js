@@ -71,17 +71,17 @@ const findPersonById = (personId, done) => {
 const findEditThenSave = async (personId, done) => {
   const foodToAdd = "hamburger";
   let personData = await Person.findById(personId).exec();
-  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-  console.log(personData);
   personData.favoriteFoods.push(foodToAdd);
-  console.log(personData);
-
+  // console.log(personData);
+  // all good above but down has some issue.
   Person.findOne({ Id: personId })
     .update(personData, function (err, data) {
       if (err) {
         done(err);
+        console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeerror");
       } else {
         done(null, data);
+        console.log("successsuccesssuccesssuccesssuccesssuccess");
       }
     })
     .exec();
